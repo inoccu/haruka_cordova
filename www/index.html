@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.1.min.css">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+        <title>Haruka</title>
+    </head>
+    <body>
+        <!-- Welcome Page -->
+        <div id="page-welcome" data-role="page">
+            <div data-role="header" data-position="fixed">
+                <h1>Haruka</h1>
+            </div>
+            <div role="main" class="ui-content">
+                <ul data-role="listview">
+                    <li>
+                        <a id="link-toybox">Toybox</a>
+                    </li>
+                </ul>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div style="text-align: center;">
+                    Copyright Artisan Edge 2014
+                </div>
+            </div>
+        </div>
+        <!-- Toybox Page -->
+        <div id="page-toybox" data-role="page">
+            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                <h1>Toybox</h1>
+            </div>
+            <div data-role="tabs">
+                <div data-role="navbar" data-icon-pos="top">
+                    <ul>
+                        <li>
+                            <a href="#pt-tab-device" data-ajax="false" data-icon="gear" class="ui-btn-active">Device</a>
+                        </li>
+                        <li>
+                            <a href="#pt-tab-camera" data-ajax="false" data-icon="camera">Camera</a>
+                        </li>
+                        <li>
+                            <a href="#pt-tab-storage" data-ajax="false" data-icon="shop">Storage</a>
+                        </li>
+                        <li>
+                            <a href="#pt-tab-books" data-ajax="false" data-icon="search">Books</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="pt-tab-device" class="ui-body-d ui-content">
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <button id="pt-btn-get-device-info">Get Device Info</button>
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-model">Model</label>
+                            <input type="text" id="pt-tab-device-model">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-cordova">Cordova</label>
+                            <input type="text" id="pt-tab-device-cordova">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-platform">Platform</label>
+                            <input type="text" id="pt-tab-device-platform">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-uuid">UUID</label>
+                            <input type="text" id="pt-tab-device-uuid">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-version">Version</label>
+                            <input type="text" id="pt-tab-device-version">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-device-name">Name</label>
+                            <input type="text" id="pt-tab-device-name">
+                        </li>
+                    </ul>
+                </div>
+                <div id="pt-tab-camera" class="ui-body-d ui-content">
+                    <button id="pt-btn-get-picture">Get Picture</button>
+                    <img id="pt-camera-image">
+                </div>
+                <div id="pt-tab-storage">
+                    <ul data-role="listview">
+                        <li data-role="fieldcontain">
+                            <label for="pt-tab-storage-text">Text</label>
+                            <input type="text" id="pt-tab-storage-text">
+                        </li>
+                        <li data-role="fieldcontain">
+                            <button id="pt-btn-storage-save">Save</button>
+                        </li>
+                    </ul>
+                </div>
+                <div id="pt-tab-books">
+                    <input type="text" id="pt-tab-books-keyword">
+                    <button id="pt-btn-search-books">Search Books</button>
+                    <ul id="pt-tab-book-list" data-role="listview" data-inset="true"></ul>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div style="text-align: center;">
+                    Copyright Artisan Edge 2014
+                </div>
+            </div>
+            <div id="pt-popup" data-role="popup" data-overlay-theme="a" data-theme="b">
+                <span id="pt-popup-message"></span>
+            </div>
+        </div>
+        <script id="template-book-list-item" type="text/template">
+            <li id="pt-tab-book-list-item-<%= cid %>">
+                <%= title %>
+            </li>
+        </script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.1.min.js"></script>
+        <script type="text/javascript" src="js/underscore-min.js"></script>
+        <script type="text/javascript" src="js/backbone-min.js"></script>
+        <script type="text/javascript" src="js/custom.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
